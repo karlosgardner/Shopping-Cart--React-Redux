@@ -1,30 +1,30 @@
 "use strict"
 import React from 'react';
 import {connect} from 'react-redux';
-import {getBooks} from '../../actions/booksActions';
+import {getWines} from '../../actions/winesActions';
 import {bindActionCreators} from 'redux';
 import {Carousel, Grid, Col, Row, Button} from 'react-bootstrap';
 
-import BookItem from './bookItem';
-import BooksForm from './booksForm';
+import WineItem from './wineItem';
+import WinesForm from './winesForm';
 import Cart from './cart';
 
 
-class BooksList extends React.Component{
+class WinesList extends React.Component{
   componentDidMount(){
-    this.props.getBooks()
+    this.props.getWines()
   }
   render(){
 
-    const booksList = this.props.books.map(function(booksArr){
+    const winesList = this.props.wines.map(function(winesArr){
       return(
-        <Col xs={12} sm={6} md={4} key={booksArr._id}>
-          <BookItem
-                _id= {booksArr._id}
-                title={booksArr.title}
-                description={booksArr.description}
-                images={booksArr.images}
-                price={booksArr.price}/>
+        <Col xs={12} sm={6} md={4} key={winesArr._id}>
+          <WineItem
+                _id= {winesArr._id}
+                title={winesArr.title}
+                description={winesArr.description}
+                images={winesArr.images}
+                price={winesArr.price}/>
         </Col>
       )
     })
@@ -52,7 +52,7 @@ class BooksList extends React.Component{
             <Cart />
           </Row>
           <Row style={{marginTop:'15px'}}>
-              {booksList}
+              {winesList}
           </Row>
         </Grid>
     )
@@ -60,15 +60,15 @@ class BooksList extends React.Component{
 }
 function mapStateToProps(state){
   return{
-    books: state.books.books,
+    wines: state.wines.wines,
     state: state,
-    stateBooks: state.books,
-    stateBooksBooks: state.books.books
+    stateWines: state.wines,
+    stateWinesWines: state.wines.wines
   }
 }
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
-    getBooks:getBooks
+    getWines:getWines
   }, dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(BooksList);
+export default connect(mapStateToProps, mapDispatchToProps)(WinesList);

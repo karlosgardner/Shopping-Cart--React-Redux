@@ -1,12 +1,12 @@
 "use strict"
 var mongoose = require('mongoose');
 
-var booksSchema = mongoose.Schema({
+var winesSchema = mongoose.Schema({
   title: String,
   description: String,
   images: String,
   price: Number
 });
 
-var Books = mongoose.model('Books', booksSchema);
-module.exports = Books;
+var Wines = mongoose.model('Wines', winesSchema);
+module.exports = Wines;

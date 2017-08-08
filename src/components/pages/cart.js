@@ -10,16 +10,16 @@ class Cart extends React.Component{
     this.props.getCart();
   }
   onDelete(_id){
-    // Create a copy of the current array of books
-    const currentBookToDelete = this.props.cart;
-    // Determine at which index in books array is the book to be deleted
-    const indexToDelete = currentBookToDelete.findIndex(
+    // Create a copy of the current array of wines
+    const currentWineToDelete = this.props.cart;
+    // Determine at which index in wines array is the wine to be deleted
+    const indexToDelete = currentWineToDelete.findIndex(
       function(cart){
         return cart._id === _id;
       }
     )
-    //use slice to remove the book at the specified index
-    let cartAfterDelete = [...currentBookToDelete.slice(0, indexToDelete), ...currentBookToDelete.slice(indexToDelete + 1)]
+    //use slice to remove the wine at the specified index
+    let cartAfterDelete = [...currentWineToDelete.slice(0, indexToDelete), ...currentWineToDelete.slice(indexToDelete + 1)]
 
     this.props.deleteCartItem(cartAfterDelete);
   }

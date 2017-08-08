@@ -4,10 +4,10 @@ import {MenuItem, InputGroup, DropdownButton, Image, Col, Row, Well, Panel, Form
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {findDOMNode} from 'react-dom';
-import {postBooks, deleteBooks, getBooks, resetButton} from '../../actions/booksActions';
+import {postWines, deleteWines, getWines, resetButton} from '../../actions/winesActions';
 import axios from 'axios';
 
-class BooksForm extends React.Component{
+class WinesForm extends React.Component{
   constructor() {
     super();
     this.state = {
@@ -16,7 +16,7 @@ class BooksForm extends React.Component{
     }
   }
   componentDidMount(){
-    this.props.getBooks();
+    this.props.getWines();
     //GET IMAGES FROM API
     axios.get('/api/images')
       .then(function(response){
@@ -27,19 +27,19 @@ class BooksForm extends React.Component{
       }.bind(this))
   }
   handleSubmit(){
-    const book=[{
+    const wine=[{
       title: findDOMNode(this.refs.title).value,
       description: findDOMNode(this.refs.description).value,
       images:findDOMNode(this.refs.image).value,
       price: findDOMNode(this.refs.price).value,
     }]
-    this.props.postBooks(book);
+    this.props.postWines(wine);
   }
 
   onDelete(){
-    let bookId = findDOMNode(this.refs.delete).value;
+    let wineId = findDOMNode(this.refs.delete).value;
 
-    this.props.deleteBooks(bookId);
+    this.props.deleteWines(wineId);
   }
 
   handleSelect(img){
@@ -58,9 +58,9 @@ class BooksForm extends React.Component{
     this.setState({img:''});
   }
   render(){
-    const booksList = this.props.books.map(function(booksArr){
+    const winesList = this.props.wines.map(function(winesArr){
       return (
-        <option key={booksArr._id}> {booksArr._id}</option>
+        <option key={winesArr._id}> {winesArr._id}</option>
       )
     })
     const imgList = this.state.images.map(function(imgArr, i){
@@ -102,7 +102,7 @@ class BooksForm extends React.Component{
                 <ControlLabel>Wine-Spirts-Beer</ControlLabel>
                 <FormControl
                     type="text"
-                    placeholder="Enter Wine Spirts Beer"
+                    placeholder="Description"
                     ref="description" />
                     <FormControl.Feedback/>
               </FormGroup>
@@ -139,18 +139,18 @@ class BooksForm extends React.Component{
 }
 function mapStateToProps(state){
   return {
-    books: state.books.books,
-    msg: state.books.msg,
-    style: state.books.style,
-    validation: state.books.validation
+    wines: state.wines.wines,
+    msg: state.wines.msg,
+    style: state.wines.style,
+    validation: state.wines.validation
   }
 }
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
-    postBooks,
-    deleteBooks,
-    getBooks,
+    postWines,
+    deleteWines,
+    getWines,
     resetButton
   }, dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(BooksForm);
+export default connect(mapStateToProps, mapDispatchToProps)(WinesForm);

@@ -1,13 +1,13 @@
 // APIs
 var mongoose = require('mongoose');
 //MONGO LAB
-mongoose.connect('mongodb://testUser:test@ds043012.mlab.com:43012/bookshop')
+//mongoose.connect
 //LOCAL DB
-//mongoose.connect('mongodb://localhost:27017/bookshop');
+//mongoose.connect('mongodb://localhost:27017/wineshop');
 
 
 
-// --->>> GET BOOKS IMAGES API <<<------
+// --->>> GET WINE IMAGES API <<<------
 app.get('/images', function(req, res){
 
   const imgFolder = __dirname + '/public/images/';

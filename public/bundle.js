@@ -11843,7 +11843,7 @@ var BooksForm = function (_React$Component) {
                 ),
                 _react2.default.createElement(_reactBootstrap.FormControl, {
                   type: 'text',
-                  placeholder: 'Enter Wine Spirts Beer',
+                  placeholder: 'Description',
                   ref: 'description' }),
                 _react2.default.createElement(_reactBootstrap.FormControl.Feedback, null)
               ),
@@ -20786,7 +20786,7 @@ var Footer = function (_React$Component) {
           _react2.default.createElement(
             "p",
             { className: "footer-text" },
-            "Copyright 2017 BooksShop. All rights reserved"
+            "Copyright 2017 Georgia Crown Distributing Co. All rights reserved"
           )
         )
       );
